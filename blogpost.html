@@ -1,0 +1,88 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	  
+</head>
+<body>
+<p id="demo"></p> 
+<div id="demoblog"></div> 
+<br><br><br><br>
+<div id="democomment"></div> 
+
+<script>
+function sendrequest()
+{
+const params = new URLSearchParams(window.location.search);
+var page_type =0;
+if(params.has('serialNumber'))
+{
+page_type = params.get('serialNumber')
+}
+document.getElementById("demo").innerHTML = page_type;
+return page_type;
+}
+
+function fetchapi(url)
+{
+fetch(url)
+.then(response => response.json())
+.then(data => {
+  tempone(data);
+})
+.catch(error => console.error(error))
+
+}
+
+
+function fetchapitwo(url)
+{
+fetch(url)
+.then(response => response.json())
+.then(data => 
+{
+console.log(data);
+temptwo(data);
+})
+.catch(error => console.error(error));
+
+}
+
+
+function tempone(data)
+{
+document.getElementById("demoblog").innerHTML = 
+`<h1>`+data.title+`</h1><h5>`+data.userId+`</h5>`
++`<div>`+data.body+`</div>`;
+}
+
+
+
+function temptwo(data)
+{
+var txt = ``;
+for (let i = 0; i < data.length; i++) {
+  txt = txt +`<div><h4>`+data[i].name+`</h4><h6>`+data[i].email+`</h6><div>`+data[i].body+`</div></div>`;
+}
+document.getElementById("democomment").innerHTML = txt;
+}
+
+
+		
+var id =sendrequest();
+fetchapi('https://jsonplaceholder.typicode.com/posts/'+id)
+fetchapitwo('https://jsonplaceholder.typicode.com/posts/'+id+'/comments');
+
+
+</script>
+</body>
+</html>
+
+
+
