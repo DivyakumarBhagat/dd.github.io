@@ -57,7 +57,7 @@ window.addEventListener('beforeunload', (event) => {
 			console.log("beforeunload");
 	var url = document.getElementById("rollValue").innerHTML;
 window.history.pushState({}, document.title, url);
-	window.history.go();
+	window.location.reload();
 	event.returnValue = "";
 });
 window.addEventListener('unload', (event) => {
