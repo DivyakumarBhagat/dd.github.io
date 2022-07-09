@@ -50,14 +50,7 @@ window.addEventListener('load', (event) => {
 window.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
 			console.log("beforeunload");
-	event.returnValue = "There are unsaved changes. Leave now?";
-});
-window.addEventListener('unload', (event) => {
-	event.preventDefault();
-			console.log("unload");
-	window.setTimeout(function () {
-		console.log("5 sec timepause");
-    }, 5000);
+	event.returnValue = "";
 });
     </script>
 </body>
