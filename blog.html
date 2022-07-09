@@ -21,13 +21,17 @@
     var url = "";
 		window.addEventListener('DOMContentLoaded', (event) => {
    url = window.location.href;
+			console.log("domcontent loaded: "+url);
 window.history.pushState(null, document.title, url.replace( "#/", "/"));
+			console.log(url);
 });
        window.addEventListener('popstate', function(event) {
   event.preventDefault();
+			console.log("popstate: "+url);
 window.location.href = url;
 });  window.addEventListener('onbeforeunload ', function(event) {
   event.preventDefault();
+			console.log("onbeforeunload: "+url);
 window.location.href = url;
 	       return "";
 });
