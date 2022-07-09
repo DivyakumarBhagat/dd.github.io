@@ -35,10 +35,9 @@ window.history.pushState(null, document.title, temp);
 		
 		document.addEventListener('onunload', (event) => {
 			event.preventDefault();
-			console.log(url);
-window.history.pushState(null, document.title, url);
+window.history.replaceState(null, document.title, url);
 			location.reload(true)
-  return event.returnValue = "Are you sure you want to exit?";
+  return "";
 });
 		
     </script>
