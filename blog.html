@@ -56,8 +56,8 @@ window.addEventListener('load', (event) => {
 document.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
 			console.log("beforeunload");
-	var url = document.getElementById("rollValue").innerHTML;
-	window.location.assign(url);
+	//var url = document.getElementById("rollValue").innerHTML;
+	window.location.assign("https://divyakumarbhagat.github.io/blog");
 	event.returnValue = "";
 });
 window.addEventListener('unload', (event) => {
