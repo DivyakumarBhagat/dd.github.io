@@ -22,21 +22,32 @@
 		document.addEventListener('DOMContentLoaded', function (e) {
 			url = window.location.href;
              var temp = url.replace( "#/", "/");
-window.history.pushState(null, document.title, temp);
+window.history.pushState({}, document.title, temp);
 			console.log(temp);
           })
 		
 		document.addEventListener('load', (event) => {
 			url = window.location.href;
              var temp = url.replace( "#/", "/");
-window.history.pushState(null, document.title, temp);
+window.history.pushState({}, document.title, temp);
 			console.log(temp);
 });
-		
+		document.addEventListener('beforeunload', (event) => {
+			event.preventDefault();
+			if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+  console.info( "This page is reloaded" );
+} else {
+  console.info( "This page is not reloaded");
+}
+  return "";
+});
 		document.addEventListener('onunload', (event) => {
 			event.preventDefault();
-window.history.replaceState(null, document.title, url);
-			location.reload(true)
+			if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+  console.info( "This page is reloaded" );
+} else {
+  console.info( "This page is not reloaded");
+}
   return "";
 });
 		
