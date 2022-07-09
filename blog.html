@@ -68,6 +68,9 @@ window.addEventListener('unload', (event) => {
 });
 window.onpopstate = function(e){
 e.preventDefault(); console.log("onpopstate");
+	var url = document.getElementById("rollValue").innerHTML;
+window.history.pushState({}, document.title, url);
+	window.history.go()
 }
     </script>
 </body>
