@@ -16,5 +16,18 @@
 	  
 </head>
 <body>
+	<script>
+		
+    var url = "";
+		window.addEventListener('DOMContentLoaded', (event) => {
+   url = window.location.href;
+window.history.pushState(null, document.title, url.replace( /#.*/, ""));
+});
+       
+window.addEventListener('beforeunload', (event) => {
+	event.preventDefault();
+window.history.pushState(null, document.title, url);
+});
+    </script>
 </body>
 </html>
