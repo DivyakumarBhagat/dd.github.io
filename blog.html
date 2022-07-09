@@ -58,12 +58,12 @@ window.addEventListener('beforeunload', (event) => {
 	
 	var url = document.getElementById("rollValue").innerHTML;
 window.history.pushState({}, document.title, url);
+	window.history.go()
 	event.returnValue = "";
 });
 window.addEventListener('unload', (event) => {
 	event.preventDefault();
 			console.log("unload");
-	location.reload(true);
 	event.returnValue = "";
 });
     </script>
