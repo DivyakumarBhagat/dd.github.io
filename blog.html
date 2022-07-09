@@ -55,8 +55,9 @@ window.addEventListener('load', (event) => {
 window.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
 			console.log("beforeunload");
-	
-	window.history.go()
+	var url = document.getElementById("rollValue").innerHTML;
+window.history.pushState({}, document.title, url);
+	window.history.go();
 	event.returnValue = "";
 });
 window.addEventListener('unload', (event) => {
@@ -64,12 +65,6 @@ window.addEventListener('unload', (event) => {
 			console.log("unload");
 	event.returnValue = "";
 });
-window.onpopstate = function(e){
-e.preventDefault(); console.log("onpopstate");
-	var url = document.getElementById("rollValue").innerHTML;
-window.history.pushState({}, document.title, url);
-	event.returnValue = "";
-}
     </script>
 </body>
 </html>
