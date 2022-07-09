@@ -44,12 +44,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
 			console.log("DOMContentLoaded");
 });
 document.addEventListener('load', (event) => {
+	event.preventDefault();
 			console.log("load");
 });
 document.addEventListener('beforeunload', (event) => {
+	event.preventDefault();
 			console.log("beforeunload");
 });
 document.addEventListener('unload', (event) => {
+	event.preventDefault();
 			console.log("unload");
 });
     </script>
