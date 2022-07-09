@@ -34,7 +34,7 @@ window.history.pushState(null, document.title, temp);
 		document.addEventListener('beforeunload', (event) => {
 			event.preventDefault();
 			console.log(url);
-window.history.pushState(null, document.title, url);
+			window.location.assign(url); 
   return event.returnValue = "Are you sure you want to exit?";
 });
 		
