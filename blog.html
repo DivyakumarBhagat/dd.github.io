@@ -66,6 +66,9 @@ window.addEventListener('unload', (event) => {
 			console.log("unload");
 	event.returnValue = "";
 });
+window.onpopstate = function(e){
+e.preventDefault(); console.log("onpopstate");
+}
     </script>
 </body>
 </html>
