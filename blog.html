@@ -31,6 +31,12 @@ window.history.pushState(null, document.title, temp);
 			console.log(temp);
 });
 		
+		document.addEventListener('beforeunload', (event) => {
+			event.preventDefault();
+			console.log(url);
+  return event.returnValue = "Are you sure you want to exit?";
+});
+		
     </script>
 </body>
 </html>
