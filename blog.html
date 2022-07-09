@@ -55,6 +55,8 @@ window.addEventListener('beforeunload', (event) => {
 window.addEventListener('unload', (event) => {
 	event.preventDefault();
 			console.log("unload");
+	window.setTimeout(function () {
+    }, 5000);
 });
     </script>
 </body>
