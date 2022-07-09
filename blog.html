@@ -23,9 +23,8 @@
    url = window.location.href;
 window.history.pushState(null, document.title, url.replace( "#/", "/"));
 });
-       
-window.addEventListener('beforeunload', (event) => {
-	event.preventDefault();
+       window.addEventListener('popstate', function(event) {
+  event.preventDefault();
 window.location.href = url;
 });
     </script>
