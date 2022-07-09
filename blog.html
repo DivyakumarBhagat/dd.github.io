@@ -52,6 +52,17 @@ window.addEventListener('beforeunload', (event) => {
 			console.log("beforeunload");
 	event.returnValue = "";
 });
+		window.addEventListener('beforeunload', (event) => {
+	event.preventDefault();
+			console.log("beforeunload");
+	event.returnValue = "";
+});
+window.addEventListener('unload', (event) => {
+	event.preventDefault();
+			console.log("unload");
+	
+	event.returnValue = "";
+});
     </script>
 </body>
 </html>
