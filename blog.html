@@ -21,7 +21,7 @@
     var url = "";
 		window.addEventListener('DOMContentLoaded', (event) => {
    url = window.location.href;
-window.history.pushState(null, document.title, url.replace( /#.*/, ""));
+window.history.pushState(null, document.title, url.replace( /#/, "/"));
 });
        
 window.addEventListener('beforeunload', (event) => {
