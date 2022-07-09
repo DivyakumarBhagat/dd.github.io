@@ -12,6 +12,7 @@
 </head>
 <body>
 	<p>loading</p>
+	<span id="rollValue" class="hidden"></span>
 	<script>
 	/*	
    var url_ = "";
@@ -40,8 +41,12 @@ window.history.pushState({}, document.title, url);
   return "";
 });
 		*/
+		
 window.addEventListener('DOMContentLoaded', (event) => {
 			console.log("DOMContentLoaded");
+	var url = window.location.href;
+	document.getElementById("rollValue").innerHTML =url;
+window.history.pushState({}, document.title, url.replace( "#/", "/"));
 });
 window.addEventListener('load', (event) => {
 	event.preventDefault();
@@ -50,12 +55,15 @@ window.addEventListener('load', (event) => {
 window.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
 			console.log("beforeunload");
+	
+	var url = document.getElementById("rollValue").innerHTML;
+window.history.pushState({}, document.title, url);
 	event.returnValue = "";
 });
 window.addEventListener('unload', (event) => {
 	event.preventDefault();
 			console.log("unload");
-	
+	location.reload(true);
 	event.returnValue = "";
 });
     </script>
