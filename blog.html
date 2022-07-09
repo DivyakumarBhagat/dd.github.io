@@ -44,6 +44,18 @@ window.history.pushState({}, document.title, url);
   return "";
 });
 		*/
+document.addEventListener('DOMContentLoaded', (event) => {
+			console.log("DOMContentLoaded");
+});
+document.addEventListener('load', (event) => {
+			console.log("load");
+});
+document.addEventListener('beforeunload', (event) => {
+			console.log("beforeunload");
+});
+document.addEventListener('unload', (event) => {
+			console.log("unload");
+});
     </script>
 </body>
 </html>
