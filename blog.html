@@ -53,10 +53,10 @@ window.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
 			console.log("beforeunload");
 	var url = document.getElementById("rollValue").innerHTML;
-	history.pushstate({}, document.title, url);
+	history.pushstate({}, document.title, "https://divyakumarbhagat.github.io/blog#/test");
 			window.onpopstate = function()
 			{
-				history.go(1);
+				history.go();
 			}
 			
 
