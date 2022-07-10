@@ -45,19 +45,18 @@ window.history.pushState({}, document.title, url);
 window.addEventListener('DOMContentLoaded', (event) => {
 			console.log("DOMContentLoaded");
 	var url = window.location.href;
-			console.log("url");
 	document.getElementById("rollValue").innerHTML = url;
-window.history.pushState({}, document.title, url.replace( "#/", "/"));
+window.history.replaceState({}, document.title, url.replace( "#/", "/"));
 });
-window.addEventListener('beforeunload', (event) => {
-	event.preventDefault();
-			console.log("beforeunload");
+window.addEventListener('popstate', (event) => {
+	
+			console.log("popstate");
 	var url = document.getElementById("rollValue").innerHTML;
-	history.replacestate({}, document.title, "https://divyakumarbhagat.github.io/blog");
-			
+	window.history.replacestate({}, document.title, url);
+			window.history.go(0);
 
 	event.returnValue = "";
-});
+},false);
     </script>
 </body>
 </html>
