@@ -52,23 +52,20 @@ window.history.pushState({}, document.title, url.replace( "#/", "/"));
 window.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
 			console.log("beforeunload");
-	//var url = document.getElementById("rollValue").innerHTML;
+	var url = document.getElementById("rollValue").innerHTML;
+	history.pushstate({}, document.title, url);
 	if(window.performance)
 	{
 		if(performance.navigation.type ==1)
 		{
 			console.log("page reloading");
-		}
-		if(performance.navigation.type == 2)
-		{
-			console.log("page forward backward");
-		}
-		else
-		{
-			console.log("page reloading");
+			window.onpopstate = function()
+			{
+				history.go(1);
+			}
+			
 		}
 	}
-	window.location.assign("https://divyakumarbhagat.github.io/about");
 	event.returnValue = "";
 });
 window.addEventListener('unload', (event) => {
