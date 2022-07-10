@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 window.history.replaceState({}, document.title, url.replace( "#/", "/"));
 });
 window.addEventListener('popstate', (event) => {
-	
+	event.preventDefault();
 			console.log("popstate");
 	var url = document.getElementById("rollValue").innerHTML;
 	window.history.replaceState({}, document.title, url);
