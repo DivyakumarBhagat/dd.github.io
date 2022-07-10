@@ -48,12 +48,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	document.getElementById("rollValue").innerHTML = url;
 window.history.replaceState({}, document.title, url.replace( "#/", "/"));
 });
-window.addEventListener('popstate', (event) => {
+window.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
-			console.log("popstate");
+			console.log("beforeunload");
+	if (performance.navigation.type == performance.navigation.TYPE_RELOAD) 
+	{
 	var url = document.getElementById("rollValue").innerHTML;
 	window.history.replaceState({}, document.title, url);
 			window.history.go(0);
+	}
+	else
+	{}
 
 	event.returnValue = "";
 },true);
