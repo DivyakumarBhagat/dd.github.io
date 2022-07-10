@@ -14,52 +14,20 @@
 	<p>loading</p>
 	<span id="rollValue" class="hidden"></span>
 	<script>
-	/*	
-   var url_ = "";
-		document.addEventListener('DOMContentLoaded', function (e) {
-			url_ = window.location.href;
-             var temp = url_.replace( "#/", "/");
-window.history.pushState({}, document.title, temp);
-			console.log(temp);
-          })
-		
-		document.addEventListener('load', (event) => {
-			console.log(window.location.href);
-});
-		document.addEventListener('beforeunload', (event) => {
-			event.preventDefault();
-			if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-window.history.pushState({}, document.title, url);
-} 
-  return "";
-});
-		document.addEventListener('onunload', (event) => {
-			event.preventDefault();
-			if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
- window.history.pushState({}, document.title, url);
-}
-  return "";
-});
-		*/
 		
 window.addEventListener('DOMContentLoaded', (event) => {
-			console.log("DOMContentLoaded");
 	var url = window.location.href;
-	document.getElementById("rollValue").innerHTML = url;
 window.history.replaceState({}, document.title, url.replace( "#/", "/"));
 window.history.pushState({}, document.title, url);
 });
 document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
 	event.preventDefault();
-			console.log("beforeunload");
 	if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) 
 	{
-			console.log("page refreshed");
 			window.history.go(1);
 	}
 	else
 	{}
-
 	event.returnValue = "";
 });
     </script>
