@@ -54,10 +54,7 @@ window.addEventListener('beforeunload', (event) => {
 			console.log("beforeunload");
 	var url = document.getElementById("rollValue").innerHTML;
 	history.pushstate({}, document.title, "https://divyakumarbhagat.github.io/blog");
-			window.onpopstate = function()
-			{
 				history.go();
-			}
 			
 
 	event.returnValue = "";
