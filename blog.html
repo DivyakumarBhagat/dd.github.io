@@ -20,8 +20,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 window.history.replaceState({}, document.title, url.replace( "#!/", "/"));
 window.history.pushState({}, document.title, url);
 });
-//document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
-document.addEventListener('beforeunload', (event) => {
+document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
+//document.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
 	if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) 
 	{
