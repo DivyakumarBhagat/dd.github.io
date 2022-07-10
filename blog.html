@@ -52,7 +52,7 @@ window.addEventListener('popstate', (event) => {
 	
 			console.log("popstate");
 	var url = document.getElementById("rollValue").innerHTML;
-	window.history.replacestate({}, document.title, url);
+	window.history.replaceState({}, document.title, url);
 			window.history.go(0);
 
 	event.returnValue = "";
