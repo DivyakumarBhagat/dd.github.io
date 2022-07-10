@@ -51,10 +51,11 @@ window.history.replaceState({}, document.title, url.replace( "#/", "/"));
 window.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
 			console.log("beforeunload");
-	if (performance.navigation.type == performance.navigation.TYPE_RELOAD) 
+	if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) 
 	{
+			console.log("page refreshed");
 	var url = document.getElementById("rollValue").innerHTML;
-	window.history.replaceState({}, document.title, url);
+	window.history.replaceState({}, document.title, "/about");
 			window.history.go(0);
 	}
 	else
