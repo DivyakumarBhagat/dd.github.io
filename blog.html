@@ -31,6 +31,32 @@ document.getElementById("rollValue").addEventListener('beforeunload', (event) =>
 	{}
 	event.returnValue = "";
 });
+		
+		
+		
+		/*
+		previous working partial correctly
+window.addEventListener('DOMContentLoaded', (event) => {
+			console.log("DOMContentLoaded");
+	var url = window.location.href;
+			console.log("url");
+	document.getElementById("rollValue").innerHTML = url;
+window.history.pushState({}, document.title, url.replace( "#/", "/"));
+});
+window.addEventListener('beforeunload', (event) => {
+	event.preventDefault();
+			console.log("beforeunload");
+	var url = document.getElementById("rollValue").innerHTML;
+	history.pushstate({}, document.title, url);
+			window.onpopstate = function()
+			{
+				history.go(1);
+			}
+			
+
+	event.returnValue = "";
+});
+		*/
     </script>
 </body>
 </html>
