@@ -17,7 +17,7 @@
 		
 window.addEventListener('DOMContentLoaded', (event) => {
 	var url = window.location.href;
-window.history.replaceState({}, document.title, url);
+window.history.pushState({}, document.title, url);
 window.history.pushState({}, document.title, url.replace( "#!/", "/"));
 });
 document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
@@ -25,7 +25,7 @@ document.getElementById("rollValue").addEventListener('beforeunload', (event) =>
 	event.preventDefault();
 	if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) 
 	{
-			window.history.go(0);
+			window.history.go(-1);
 	}
 	else
 	{}
