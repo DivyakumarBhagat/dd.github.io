@@ -55,7 +55,9 @@ window.addEventListener('beforeunload', (event) => {
 	{
 			console.log("page refreshed");
 	var url = document.getElementById("rollValue").innerHTML;
+			console.log(url);
 	window.history.replaceState({}, document.title, "/about");
+		console.log(window.location.href);
 			window.history.go(-1);
 	}
 	else
