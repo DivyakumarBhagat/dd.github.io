@@ -57,6 +57,17 @@ document.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
 			console.log("beforeunload");
 	//var url = document.getElementById("rollValue").innerHTML;
+	if(window.performance)
+	{
+		if(performance.navigation.type ==1)
+		{
+			console.log("page reloading");
+		}
+		else
+		{
+			console.log("page reloading");
+		}
+	}
 	window.location.assign("https://divyakumarbhagat.github.io/about");
 	event.returnValue = "";
 });
