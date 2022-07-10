@@ -54,23 +54,12 @@ window.addEventListener('beforeunload', (event) => {
 			console.log("beforeunload");
 	var url = document.getElementById("rollValue").innerHTML;
 	history.pushstate({}, document.title, url);
-	if(window.performance)
-	{
-		if(performance.navigation.type ==1)
-		{
-			console.log("page reloading");
 			window.onpopstate = function()
 			{
 				history.go(1);
 			}
 			
-		}
 	}
-	event.returnValue = "";
-});
-window.addEventListener('unload', (event) => {
-	event.preventDefault();
-			console.log("unload");
 	event.returnValue = "";
 });
     </script>
