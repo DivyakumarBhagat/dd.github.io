@@ -49,9 +49,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	document.getElementById("rollValue").innerHTML = url;
 window.history.pushState({}, document.title, url.replace( "#/", "/"));
 });
-window.addEventListener('load', (event) => {
-			console.log("load");
-});
 window.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
 			console.log("beforeunload");
