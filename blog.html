@@ -28,7 +28,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 //document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
 window.addEventListener('popstate', (event) => {
         console.log('inside popstate');
-   window.history.pushState({path: url,count:0}, document.title, document.getElementById("rollValue"));	
+	var url = document.getElementById("rollValue");
+   window.history.pushState({path: url,count:0}, document.title, url);	
 		window.history.go(1);
   
 });
