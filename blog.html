@@ -21,16 +21,16 @@ window.history.pushState({}, document.title, url);
 window.history.pushState({}, document.title, url.replace( "#!/", "/"));
 });
 //document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
-document.addEventListener('popstate', (event) => {
-	event.preventDefault();
-	if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) 
+window.addEventListener('popstate', (event) => {
+	if (event.state) {
+        console.log('popstate not null');
+		if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) 
 	{
 			window.history.go(0);
 	}
-	else
-	{}
-	event.returnValue = "";
-});
+    }
+	
+},false);
 		
 		
 		
