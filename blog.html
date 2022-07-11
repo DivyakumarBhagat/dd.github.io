@@ -16,30 +16,23 @@
 	<script>
 		
 window.addEventListener('DOMContentLoaded', (event) => {
+	content.log("domcontentloaded");
 	var url = window.location.href;
-	navigate(url, false);
-	navigate(url.replace( "#!/", "/"), false
+	document.getElementById("rollValue").innerHTML = url;
+    //window.history.pushState({path: "original"}, document.title, url);
+    window.history.replaceState({path: true}, document.title, url.replace( "#!/", "/"));
 });
 //document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
 window.addEventListener('popstate', (event) => {
         console.log('inside popstate');
-	if (!e.state || !e.state.path) {
-    return;
+	var url = document.getElementById("rollValue");
+	if (e.state.path) {
+    window.history.replaceState({path: false}, document.title, url);
+		window.history.go(0);
   }
-		if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) 
-	{
-	navigate(e.state.path, true);
-	}
 	
 },false);
-		
-function navigate(url, popping) {
-  console.log('navigating to %s', url);
-  document.body.innerHTML = url;
-  if (!popping) {
-    window.history.pushState({path: url}, document.title, url);
-  }
-}	
+	
 		
 		/*
 		previous working partial correctly
