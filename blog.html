@@ -52,7 +52,7 @@ window.addEventListener('beforeunload', (event) => {
 	history.pushstate({}, document.title, url);
 			window.onpopstate = function()
 			{
-				history.go(1);
+				history.go(0);
 			}
 			
 
