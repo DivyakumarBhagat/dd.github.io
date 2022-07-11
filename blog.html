@@ -30,7 +30,7 @@ window.addEventListener('popstate', (event) => {
         console.log('inside popstate');
 	var url = document.getElementById("rollValue").innerHTML;
    window.history.pushState({path: url,count:0}, document.title, url);	
-		window.history.go(1);
+		window.history.go(0);
   
 });
 	
