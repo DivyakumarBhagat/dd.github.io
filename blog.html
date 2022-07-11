@@ -17,23 +17,29 @@
 		
 window.addEventListener('DOMContentLoaded', (event) => {
 	var url = window.location.href;
-window.history.pushState({}, document.title, url);
-window.history.pushState({}, document.title, url.replace( "#!/", "/"));
+	navigate(url, false);
+	navigate(url.replace( "#!/", "/"), false
 });
 //document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
 window.addEventListener('popstate', (event) => {
         console.log('inside popstate');
-	if (event.state) {
-        console.log('popstate not null');
+	if (!e.state || !e.state.path) {
+    return;
+  }
 		if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) 
 	{
-			window.history.go(-1);
+	navigate(e.state.path, true);
 	}
-    }
 	
 },false);
 		
-		
+function navigate(url, popping) {
+  console.log('navigating to %s', url);
+  document.body.innerHTML = url;
+  if (!popping) {
+    window.history.pushState({path: url}, document.title, url);
+  }
+}	
 		
 		/*
 		previous working partial correctly
