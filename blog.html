@@ -27,13 +27,11 @@ window.addEventListener('popstate', (event) => {
         console.log('inside popstate');
 	var url = document.getElementById("rollValue");
 	if (event.state.path === "generated") {
-    window.history.pushState({path:"blank"}, document.title, url+"/goback");
-            window.history.go(-1);
-  }
-	else {
+        console.log('inside popstate');
+            window.history.go(0);
   }
 	
-},false);
+});
 	
 		
 		/*
