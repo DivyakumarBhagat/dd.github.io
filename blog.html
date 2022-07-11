@@ -17,7 +17,8 @@
 		
 window.addEventListener('DOMContentLoaded', (event) => {
 	console.log("domcontentloaded");
-	var url = window.location.href;
+	var url = window.location.path;
+	document.getElementById("rollValue").innerHTML = url;
 	if(window.history.pushState) {
 //window.history.pushState({path: "original"}, document.title, url);
 //   window.history.pushState({path: url}, document.title, url.replace( "#!/", "/"));
@@ -27,20 +28,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 //document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
 window.addEventListener('popstate', (event) => {
         console.log('inside popstate');
-	if (event.state.count === 1) {
-        console.log('inside popstate');
-            document.getElementById("rollValue").innerHTML = event.state.path +"my work successful n time input";
-   window.history.replaceState({path: url,count:1}, document.title, event.state.path);	
-		window.history.go(0);
-  }
-	else if (!event.state) {
-        console.log('inside popstate');
-            document.getElementById("rollValue").innerHTML = "first time ";
-  }
-	
-	else {
-            document.getElementById("rollValue").innerHTML = "my work not successful";
-        }
+   window.history.pushState({path: url,count:0}, document.title, document.getElementById("rollValue"));	
+		window.history.go(1);
+  
 });
 	
 	
