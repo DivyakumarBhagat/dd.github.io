@@ -18,9 +18,10 @@
 window.addEventListener('DOMContentLoaded', (event) => {
 	console.log("domcontentloaded");
 	var url = window.location.href;
-	document.getElementById("rollValue").innerHTML = url;
-    //window.history.pushState({path: "original"}, document.title, url);
-    window.history.pushState({path: url}, document.title, url.replace( "#!/", "/"));
+	if(window.history.pushState) {
+window.history.pushState({path: "original"}, document.title, url);
+   window.history.pushState({path: url}, document.title, url.replace( "#!/", "/"));
+  }
 });
 //document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
 window.addEventListener('popstate', (event) => {
@@ -28,6 +29,7 @@ window.addEventListener('popstate', (event) => {
 	if (event.state !== null) {
         console.log('inside popstate');
             document.getElementById("rollValue").innerHTML = event.state.path +"my work successful";
+		
   }
 	
 	else {
@@ -35,7 +37,6 @@ window.addEventListener('popstate', (event) => {
         }
 });
 	
-});
 	
 		
 		/*
