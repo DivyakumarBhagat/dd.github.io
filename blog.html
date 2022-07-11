@@ -17,7 +17,7 @@
 		
 window.addEventListener('DOMContentLoaded', (event) => {
 	console.log("domcontentloaded");
-	var url = window.location.path;
+	var url = window.location.pathname;
 	document.getElementById("rollValue").innerHTML = url;
 	if(window.history.pushState) {
 //window.history.pushState({path: "original"}, document.title, url);
