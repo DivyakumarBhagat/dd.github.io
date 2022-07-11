@@ -19,8 +19,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	console.log("domcontentloaded");
 	var url = window.location.href;
 	if(window.history.pushState) {
-window.history.pushState({path: "original"}, document.title, url);
-   window.history.pushState({path: url}, document.title, url.replace( "#!/", "/"));
+//window.history.pushState({path: "original"}, document.title, url);
+//   window.history.pushState({path: url}, document.title, url.replace( "#!/", "/"));
+   window.history.replaceState({path: url}, document.title, url.replace( "#!/", "/"));		
   }
 });
 //document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
