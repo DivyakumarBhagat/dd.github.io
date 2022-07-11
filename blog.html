@@ -21,16 +21,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	if(window.history.pushState) {
 //window.history.pushState({path: "original"}, document.title, url);
 //   window.history.pushState({path: url}, document.title, url.replace( "#!/", "/"));
-   window.history.replaceState({path: url}, document.title, url.replace( "#!/", "/"));		
+   window.history.replaceState({path: url,count:1}, document.title, url.replace( "#!/", "/"));		
   }
 });
 //document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
 window.addEventListener('popstate', (event) => {
         console.log('inside popstate');
-	if (event.state !== null) {
+	if (event.state.count === 1) {
         console.log('inside popstate');
-            document.getElementById("rollValue").innerHTML = event.state.path +"my work successful";
-		
+            document.getElementById("rollValue").innerHTML = event.state.path +"my work successful n time input";
+   window.history.replaceState({path: url,count:1}, document.title, event.state.path);	
+		window.history.go(0);
+  }
+	else if (!event.state) {
+        console.log('inside popstate');
+            document.getElementById("rollValue").innerHTML = "first time ";
   }
 	
 	else {
