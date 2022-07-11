@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 window.addEventListener('popstate', (event) => {
         console.log('inside popstate');
 	var url = document.getElementById("rollValue");
-	if (e.state.path =="generated") {
+	if (event.state.path =="generated") {
             window.history.back();
   }
 	
