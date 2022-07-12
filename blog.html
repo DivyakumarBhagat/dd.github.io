@@ -10,37 +10,42 @@
 	<span id="rollValue" class="hidden"></span>
 	<script>
 		
-function replace(data,title,url)
-{
-window.history.replaceState(data,title,url);
-console.log("replaced: "+window.location.href);
-}
-function push(data,title,url)
-{
-window.history.pushState(data,title,url);
-console.log("pushed: "+window.location.href);
-}
+	function replace(data,title,url)
+	{
+		window.history.replaceState(data,title,url);
+		console.log("replaced: "+window.location.href);
+	}
+	function push(data,title,url)
+	{
+		window.history.pushState(data,title,url);
+		console.log("pushed: "+window.location.href);
+	}
 		
 window.addEventListener('DOMContentLoaded', (event) => {
 	console.log("domcontentloaded");
 	var url = window.location.pathname + window.location.search + window.location.hash;
 	document.getElementById("rollValue").innerHTML = url;
 	var i=1;
-console.log("1:"+ window.location.href );  // whatever your current location href is
-if(window.history.pushState) {
-replace({path: 1}, document.title, url);
-push({path: 2}, document.title, url.replace( "#!/", "/"));	
-  }
-	window.addEventListener('popstate', (event,state) => {
-        console.log('inside popstate'+ state.path);
-	var url = document.getElementById("rollValue").innerHTML;
-	/*
-replace({path: 0}, document.title, url);
-console.log("2:"+ window.location.href );  // whatever your current location href is
-		//window.history.go(0);
-		*/
-  
+	console.log("1:"+ window.location.href );  // whatever your current location href is
+	if(window.history.pushState) {
+		replace({path: 1}, document.title, url);
+		push({path: 2}, document.title, url.replace( "#!/", "/"));	
+	}
 });
+window.addEventListener('popstate', (event,state) => {
+        console.log('inside popstate'+ state.path);
+	//var url = document.getElementById("rollValue").innerHTML;
+	/*
+	replace({path: 0}, document.title, url);
+	console.log("2:"+ window.location.href );  // whatever your current location href is
+	//window.history.go(0);
+	*/
+
+});	
+window.addEventListener('beforeunload', (event) => {
+	event.preventDefault();
+	window.history.go(-1);
+	event.returnValue = "";
 });
 
 	
