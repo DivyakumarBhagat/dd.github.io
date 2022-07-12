@@ -28,8 +28,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	var i=1;
 	console.log("1:"+ window.location.href );  // whatever your current location href is
 	if(window.history.pushState) {
-		replace({path: 1}, document.title, url);
-		push({path: 2}, document.title, url.replace( "#!/", "/"));	
+		replace({path: i}, document.title, url);i++;
+		push({path: i}, document.title, url.replace( "#!/", "/"));	
 	}
 });
 		/*
@@ -46,9 +46,7 @@ window.addEventListener('popstate', (event) => {
 		*/
 window.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
-	var url = document.getElementById("rollValue").innerHTML;
-	window.history.pushstate({path: 1}, document.title, url);
-	window.history.go(0);
+	window.history.go(-1);
 	event.returnValue = "";
 });
 
