@@ -19,18 +19,26 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	console.log("domcontentloaded");
 	var url = window.location.pathname + window.location.search + window.location.hash;
 	document.getElementById("rollValue").innerHTML = url;
-	if(window.history.pushState) {
-//window.history.pushState({path: "original"}, document.title, url);
-//   window.history.pushState({path: url}, document.title, url.replace( "#!/", "/"));
-   window.history.replaceState({path: url,count:1}, document.title, url.replace( "#!/", "/"));		
+	var i=0;
+console.log("1:"+ window.location.href );  // whatever your current location href is
+if(window.history.pushState) {
+		if(!window.history.state)
+		{
+		window.history.replaceState({path: i}, document.title, url);
+console.log("2:"+ window.location.href );  // whatever your current location href is
+		i++;
+		}
+window.history.pushState({path: i}, document.title, url.replace( "#!/", "/"));		
+console.log("3:"+ window.location.href );  // whatever your current location href is
   }
 });
-//document.getElementById("rollValue").addEventListener('beforeunload', (event) => {
 window.addEventListener('popstate', (event) => {
         console.log('inside popstate');
 	var url = document.getElementById("rollValue").innerHTML;
+	
    window.history.pushState({path: url,count:0}, document.title, url);	
-		window.history.go(0);
+console.log("4:"+ window.location.href );  // whatever your current location href is
+//		window.history.go(0);
   
 });
 	
