@@ -17,35 +17,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	var i=1;
 console.log("1:"+ window.location.href );  // whatever your current location href is
 if(window.history.pushState) {
-	var i=0;
-	if(window.history.state.path)
-	{
 window.history.replaceState({path: 1}, document.title, url);
-		i=1;
-	}
-	else
-	{
-window.history.replaceState({path: 0}, document.title, url);
-		i=0;
-	}
 console.log("2:"+ window.location.href );  // whatever your current location href is
-	
-window.history.pushState({path: i}, document.title, url.replace( "#!/", "/"));	
-console.log("4:"+ window.location.href );  // whatever your current location href is
+window.history.pushState({path: 2}, document.title, url.replace( "#!/", "/"));	
+console.log("3:"+ window.location.href );  // whatever your current location href is
   }
 });
 window.addEventListener('popstate', (event) => {
         console.log('inside popstate');
 	var url = document.getElementById("rollValue").innerHTML;
-	if(window.history.state.path === 1 || window.history.state.path === 0)
-	{
-		window.history.go(-1);
-	}
-	else
-	{
+	/*
 window.history.replaceState({path: 0}, document.title, url);
 		window.history.go(0);
-	}
+		*/
   
 });
 	
