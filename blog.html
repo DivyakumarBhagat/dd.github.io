@@ -21,6 +21,22 @@
 		console.log("pushed: "+window.location.href);
 	}
 		
+	function detect()
+	{
+		if (window.performance)
+		{
+			if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD)
+			{
+				return "REFRESH";
+			}
+			else if (window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD)
+			{		
+				return "BACKWARD_FORWARD";
+			}
+		}
+	return "";
+	}
+		
 window.addEventListener('DOMContentLoaded', (event) => {
 	console.log("domcontentloaded");
 	var url = window.location.pathname + window.location.search + window.location.hash;
@@ -33,21 +49,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		push({path: i}, document.title, url.replace( "#!/", "/"));	
 	}
 });
-		/*
+		
 window.addEventListener('popstate', (event) => {
-        console.log('inside popstate'+ state.path);
+        console.log('inside popstate' detect());
 	//var url = document.getElementById("rollValue").innerHTML;
 	
-	replace({path: 0}, document.title, url);
-	console.log("2:"+ window.location.href );  // whatever your current location href is
+	//replace({path: 0}, document.title, url);
+	//console.log("2:"+ window.location.href );  // whatever your current location href is
 	//window.history.go(0);
 	
 
 });	
-		*/
+		
 window.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
-        console.log('inside beforeunload');
+        console.log(detect());
 	event.returnValue = "";
 });
 
