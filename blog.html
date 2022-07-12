@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	var i=1;
 console.log("1:"+ window.location.href );  // whatever your current location href is
 if(window.history.pushState) {
-		if(window.history.state.path)
+		if(!window.history.state.path)
 		{
 		window.history.replaceState({path: i}, document.title, url);
 console.log("2:"+ window.location.href );  // whatever your current location href is
@@ -25,20 +25,18 @@ console.log("2:"+ window.location.href );  // whatever your current location hre
 		}
 	else
 		{
-		window.history.replaceState({path: i}, document.title, url);
+window.history.pushState({path: i}, document.title, url.replace( "#!/", "/"));	
 console.log("3:"+ window.location.href );  // whatever your current location href is
 		i++;
 		}
-window.history.pushState({path: i}, document.title, url.replace( "#!/", "/"));		
-console.log("4:"+ window.location.href );  // whatever your current location href is
   }
 });
 window.addEventListener('popstate', (event) => {
         console.log('inside popstate');
 	var url = document.getElementById("rollValue").innerHTML;
 	
-   window.history.pushState({path: url,count:0}, document.title, url);	
-console.log("5:"+ window.location.href );  // whatever your current location href is
+   window.history.pushState({path: 0}, document.title, url);	
+console.log("4:"+ window.location.href );  // whatever your current location href is
 //		window.history.go(0);
   
 });
