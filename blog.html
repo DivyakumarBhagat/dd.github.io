@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	console.log("2:"+ url );  // whatever your current location href is
 	if(window.history.pushState) {
 		replace({path: i}, document.title, url);i++;
-		push({path: i}, document.title, url.replace( "#!/", "/"));	
+		push({path: i}, document.title, url.replace( "#!/", "#"));	
 	}
 });
 	/*	
@@ -68,11 +68,11 @@ if(supports_history_api() || supports_performance_api())
 {
 if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD)
 {
-return "REFRESH";
+console.log("REFRESH");
 }
 else if (window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD)
 {		
-return "BACKWARD_FORWARD";
+console.log("BACKWARD_FORWARD");
 }
 }
 };
