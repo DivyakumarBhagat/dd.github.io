@@ -27,6 +27,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	document.getElementById("rollValue").innerHTML = url;
 	var i=1;
 	console.log("1:"+ window.location.href );  // whatever your current location href is
+	console.log("2:"+ url );  // whatever your current location href is
 	if(window.history.pushState) {
 		replace({path: i}, document.title, url);i++;
 		push({path: i}, document.title, url.replace( "#!/", "/"));	
