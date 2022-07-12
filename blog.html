@@ -31,8 +31,7 @@ if(window.history.pushState) {
 replace({path: 1}, document.title, url);
 push({path: 2}, document.title, url.replace( "#!/", "/"));	
   }
-});
-window.addEventListener('popstate', (event,state) => {
+	window.addEventListener('popstate', (event,state) => {
         console.log('inside popstate'+ state.path);
 	var url = document.getElementById("rollValue").innerHTML;
 	/*
@@ -42,6 +41,8 @@ console.log("2:"+ window.location.href );  // whatever your current location hre
 		*/
   
 });
+});
+
 	
 	
 		
