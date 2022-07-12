@@ -64,6 +64,7 @@ function supports_history_api() {
 // Setup our function to run on various events
 var someFunction = function (event)
 {
+event.preventDefault();
 if(supports_history_api() || supports_performance_api())
 {
 if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD)
