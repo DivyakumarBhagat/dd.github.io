@@ -21,22 +21,6 @@
 		console.log("pushed: "+window.location.href);
 	}
 		
-	function detect()
-	{
-		if (window.performance)
-		{
-			if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD)
-			{
-				return "REFRESH";
-			}
-			else if (window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD)
-			{		
-				return "BACKWARD_FORWARD";
-			}
-		}
-	return "";
-	}
-		
 window.addEventListener('DOMContentLoaded', (event) => {
 	console.log("domcontentloaded");
 	var url = window.location.pathname + window.location.search + window.location.hash;
@@ -49,7 +33,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		push({path: i}, document.title, url.replace( "#!/", "/"));	
 	}
 });
-		
+	/*	
 window.addEventListener('popstate', (event) => {
         console.log('inside popstate'+ detect());
 	//var url = document.getElementById("rollValue").innerHTML;
@@ -66,6 +50,36 @@ window.addEventListener('beforeunload', (event) => {
         console.log(detect());
 	event.returnValue = "";
 });
+*/
+		
+//check for html5 support
+function supports_performance_api() {
+  return !!(window.performance && window.performance.navigation);
+}
+//check for html5 support
+function supports_history_api() {
+  return !!(window.history && window.history.pushState);
+}
+
+// Setup our function to run on various events
+var someFunction = function (event)
+{
+if(supports_history_api() || supports_performance_api())
+{
+if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD)
+{
+return "REFRESH";
+}
+else if (window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD)
+{		
+return "BACKWARD_FORWARD";
+}
+}
+};
+
+// Add our event listeners
+window.addEventListener('beforeunload', someFunction, false);
+window.addEventListener('popstate', someFunction, false);
 
 	
 	
