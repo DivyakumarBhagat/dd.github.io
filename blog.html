@@ -32,8 +32,8 @@ replace({path: 1}, document.title, url);
 push({path: 2}, document.title, url.replace( "#!/", "/"));	
   }
 });
-window.addEventListener('popstate', (event) => {
-        console.log('inside popstate');
+window.addEventListener('popstate', (event,state) => {
+        console.log('inside popstate'+ state.path);
 	var url = document.getElementById("rollValue").innerHTML;
 	/*
 replace({path: 0}, document.title, url);
