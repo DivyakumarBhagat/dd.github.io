@@ -32,19 +32,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		push({path: 2}, document.title, url.replace( "#!/", "/"));	
 	}
 });
-window.addEventListener('popstate', (event,state) => {
+		/*
+window.addEventListener('popstate', (event) => {
         console.log('inside popstate'+ state.path);
 	//var url = document.getElementById("rollValue").innerHTML;
-	/*
+	
 	replace({path: 0}, document.title, url);
 	console.log("2:"+ window.location.href );  // whatever your current location href is
 	//window.history.go(0);
-	*/
+	
 
 });	
+		*/
 window.addEventListener('beforeunload', (event) => {
 	event.preventDefault();
-	window.history.go(-1);
+	var url = document.getElementById("rollValue").innerHTML;
+	window.history.pushstate({path: 1}, document.title, url);
+	window.history.go(0);
 	event.returnValue = "";
 });
 
