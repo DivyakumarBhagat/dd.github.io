@@ -19,10 +19,6 @@
 
 </p>
 	<script>
-	
-var myHistory = [];
-var cG;
-var pG;
 
 // Add our event listeners
 window.addEventListener('load', onLoad);
@@ -43,139 +39,14 @@ console.log("beforeunload_ detect")
 };
 var popState = function (event)
 	{
-	console.log("popstate_ detect");
-	
-	
-	console.log("event.state.current"+event.state.current);
-	console.log("event.state.previous"+event.state.previous);
-	console.log("pG" + pG);
-	console.log("cG" + cG);
-	/*
-		if (event.state === null)
-		{
-console.log("it is regular click or click to other unknown hash");
-		}
-		else 
-		{
-			if(event.state.current > pG)
-			{
-			console.log("forwarded");
-			//window.history.forward();
-			}
-			else if(event.state.current < pG)
-			{
-			console.log("backword");
-			//window.history.backword();
-			}
-			else
-			{
-console.log("no more histroy");
-			} 
-		}
-	
-	*/
-	
-	
 event.preventDefault();
-	
-	
-	//someFunction(event,"popstate");
-	
+console.log("popstate_ detect");
 	};
+		
 var onLoad = function (event)
 	{
 		console.log("onload");
-		var url = window.location.pathname + window.location.search + window.location.hash;
-		var i=1;
-		if(window.history.state ===null)
-		{
-// If the state is null, this is a NEW navigation, navigated to your page directly (not using back/forward)
-
-
-			replace({previous: -1, current: 0, isBackPage: true}, document.title, url);i++;
-			push({previous: 0, current: 1, isBackPage: false}, document.title, url.replace( "#!/", "/"));
-cG=window.history.state.current;
-pG = window.history.state.previous;
-			myHistory.push(cG);
-			return;
-		}
-	if (window.history.state.isBackPage)
-		{
-		i = window.history.state.path;
-// If the user came into our app via the back page,
-// you can either push them forward one more step or just use pushState as above.
-window.history.go(1); //or window.history.pushState({path: i, isBackPage: false }, "<name>", "<url>");
-		}
-	setTimeout(function()
-		{
-			window.addEventListener('popstate', popState, false);
-		}, 100);
 	};
-
-//history.pushState({path: i, isBackPage: false},...},...);
-//This state is replaced anytime details change so they are saved in the history.
-
-
-//check for html performance support
-function supports_performance_api() {
-  return !!(window.performance && window.performance.navigation);
-}
-//check for html5 support
-function supports_history_api() {
-  return !!(window.history && window.history.pushState);
-}
-
-
-// Setup our function to run on various events
-var someFunction = function (event,eventtype)
-{
-if(supports_history_api() || supports_performance_api())
-{
-if (eventtype =="beforeunload" && window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD)
-{
-return "REFRESH";
-}
-else if (eventtype =="popstate" && window.performance.navigation.type === window.performance.navigation.TYPE_BACK_FORWARD)
-{		
-return "BACKWARD_FORWARD";
-}
-}
-};
-
-	function replace(data,title,url)
-	{
-		window.history.replaceState(data,title,url);
-		console.log("replaced: "+window.location.href);
-	}
-	function push(data,title,url)
-	{
-		window.history.pushState(data,title,url);
-		console.log("pushed: "+window.location.href);
-	}
-		
-		/*
-window.addEventListener('DOMContentLoaded', (event) => {
-	
-});
-		
-window.addEventListener('popstate', (event) => {
-        console.log('inside popstate'+ detect());
-	//var url = document.getElementById("rollValue").innerHTML;
-window.History.pushState({urlPath:'www.domain.com/page2.php'},"",'www.domain.com/page2.php')
-	//replace({path: 0}, document.title, url);
-	//console.log("2:"+ window.location.href );  // whatever your current location href is
-	//window.history.go(0);
-	
-
-});	
-
-window.addEventListener('beforeunload', (event) => {
-	event.preventDefault();
-        console.log(detect());
-	event.returnValue = "";
-});
-
-*/
 		
     </script>
 </body>
