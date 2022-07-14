@@ -23,7 +23,8 @@
 // Add our event listeners
 window.addEventListener('load', onLoad);
 window.addEventListener('click', onClick);
-window.addEventListener('beforeunload', beforeUnload, false);
+window.addEventListener('beforeunload', beforeUnload);
+window.addEventListener('popstate', popState);
 
 var onClick = function (event)
 {
