@@ -19,9 +19,7 @@
 
 </p>
 	<script>
-		
-
-
+	
 var myHistory = [];
 var cG;
 var pG;
@@ -29,17 +27,20 @@ var pG;
 // Add our event listeners
 window.addEventListener('load', onLoad);
 window.addEventListener('click', onClick);
-//window.addEventListener('beforeunload', beforeUnload, false);
+window.addEventListener('beforeunload', beforeUnload, false);
 
 var onClick = function (event)
 {
 event.preventDefault();
-myHistory.push(cG+1);
-push({previous: cG, current: cg+1, isBackPage: false}, "",object.target.href);
+	console.log(event.target.href);
 }
 
 
-//var beforeUnload = function (event){console.log("beforeunload_ detect");someFunction(event,"beforeunload");};
+var beforeUnload = function (event)
+{
+event.preventDefault();
+console.log("beforeunload_ detect")
+};
 var popState = function (event)
 	{
 	console.log("popstate_ detect");
